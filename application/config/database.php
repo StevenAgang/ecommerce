@@ -72,9 +72,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$connection = getenv('schema');
-$connection .= 'host=' . getenv('host');
-$connection .= ';port=' . getenv('port');
+$uri = '';
+$fields = parse_url($uri);
+$connection = 'mysql:';
+$connection .= 'host=' . $fields['host'];
+$connection .= ';port=' .$fields['port'];
 $connection .= ';dbname=' . getenv('database');
 $db['default'] = array(
 	'dsn'	=> $connection,
