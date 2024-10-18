@@ -1,0 +1,8 @@
+@media (max-width: 1919px){
+    main,article,header,aside,footer{
+        display: none;
+    }
+    body::after{
+        content: 'Sorry this website is not designed for smaller devices (MIN: 1920px width devices)';
+    }
+}

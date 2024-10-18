@@ -1,0 +1,117 @@
+#product_container
+{
+    width: 98%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    padding: 1rem ;
+}
+    #container #image_container,
+    #container #details
+    {
+        display: inline-block;
+    }
+    #container #image_container
+    {
+        width: 20%;
+        text-align: center;
+    }
+        #container #image_container #main_image
+        {
+            max-width: 100%;
+            width: 100rem;
+            height: 25rem;
+            margin-block-end: 1rem;
+            border-radius: 5px;
+        }
+            #images
+            {
+                padding: 0;
+                margin: 0;
+                display: block;
+                width: 100%;
+            }
+                #images img
+                {
+                    cursor: pointer;
+                    border-radius: 5px;
+                    max-width: 100%;
+                    width: 5rem;
+                    height: 5rem;
+                    transition: 200ms ease-in-out;
+                }
+                #images img:hover
+                {
+                    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+                    transform: scale(1.05);
+                }
+    #container #details
+    {
+        vertical-align: top;
+        min-height: 31.5rem;
+        width: 75%;
+        margin-inline: 1rem;
+    }
+        #details h1
+        {
+            font-size: 2rem;
+        }
+        #details h2
+        {
+            margin-block: 1rem;
+            font-size: 1rem;
+        }
+            h2 mark
+            {
+                background-color: #333333;
+                padding: 0.2rem;
+                color: white;
+                border-radius: 10%;
+            }
+        #details h3
+        {
+            font-size: 0.9rem;
+        }
+        #details form
+        {
+            padding: 1rem;
+        }
+        #details input
+        {
+            width: 5%;
+            font-size: 1.2rem;
+        }
+        #details input[type=number]
+        {
+            text-align: center;
+        }
+        #details input[name=sum]
+        {
+            width: 7%;
+        }
+        #details input[type=submit]
+        {
+            width: 8%;
+            font-size: 1rem;
+            background-color: #333333;
+            color: white;
+            border: none;
+            padding: 0.3rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #details article
+        {
+            width: 100%;
+            min-height: 14rem;
+            padding: 1rem;
+            margin: 0;
+        }
+.products
+{
+    min-width: 100%;
+    padding: 3rem;
+    margin: 0 auto;
+}
+    .products h1
+   {
+        font-size: 1.5rem;
+   }

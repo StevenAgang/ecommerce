@@ -1,0 +1,77 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body
+{
+    background-color: #E8E5DE;
+}
+main
+{
+    max-width: 50rem;
+    width: 100%;
+    margin: 10rem auto;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+    main h1
+    {
+        text-align: center;
+        color: #333333;
+    }
+    main form
+    {
+        margin-block: 1rem;
+    }
+    main form input
+    {
+        margin-block: 1rem;
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid gray;
+        background-color: transparent;
+        border-inline: none;
+        border-top: none;
+    }
+    main form input[type=submit]
+    {
+        cursor: pointer;
+        width: 50%;
+        margin: 0 auto;
+        border: none;
+        background-color: #333333;
+        color: white;
+        font-size: 1.1rem;
+    }
+    main form p
+    {
+       position: relative;
+       bottom: 1rem;
+    }
+main a
+{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+}
+.error
+{
+    width: 100%;
+    background-color: red;
+}
+    .error p
+    {
+        color: white;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+#account{
+    margin-inline: 1rem;
+}
