@@ -72,19 +72,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$uri = '';
+$uri = getenv('uri');
 $fields = parse_url($uri);
 $connection = 'mysql:';
 $connection .= 'host=' . $fields['host'];
-$connection .= ';port=' .$fields['port'];
+$connection .= ';port='. $fields['port'];
 $connection .= ';dbname=' . getenv('database');
+$connection .= ";sslmode=verify-ca;sslrootcert=". __DIR__ . '/../../ca.pem';
 $db['default'] = array(
 	'dsn'	=> $connection,
 	'hostname' => getenv('host'),
 	'username' => getenv('username'),
 	'password' => getenv('password'),
 	'database' => getenv('database'),
-	'dbdriver' => getenv('driver'),
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
