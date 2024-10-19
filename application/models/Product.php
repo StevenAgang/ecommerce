@@ -174,7 +174,7 @@ class Product extends CI_Model
             if($files['name'] !== '')
             {
                 ++$count;
-                $target_dir = 'assets/img/'. $data['categories'].'/';
+                $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
                 $file_parts = pathinfo(basename($files['name']));
                 $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
                 $target_file = $target_dir . $new_file_name;
@@ -263,7 +263,7 @@ class Product extends CI_Model
                     {
                         unlink($file_path);
                     }
-                    $target_dir = 'assets/img/'. $data['categories'].'/';
+                    $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
                     $file_parts = pathinfo(basename($files['name']));
                     $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
                     $target_file = $target_dir . $new_file_name;
@@ -279,7 +279,7 @@ class Product extends CI_Model
                         {
                             unlink($file_path);
                         }
-                        $target_dir = 'assets/img/'. $data['categories'].'/';
+                        $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
                         $file_parts = pathinfo(basename($files['name']));
                         $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
                         $target_file = $target_dir . $new_file_name;
@@ -288,7 +288,7 @@ class Product extends CI_Model
                     }
                     else
                     {
-                        $target_dir = 'assets/img/'. $data['categories'].'/';
+                        $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
                         $file_parts = pathinfo(basename($files['name']));
                         $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
                         $target_file = $target_dir . $new_file_name;
