@@ -24,6 +24,7 @@ class Users extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user');
 		$this->status = $this->session->userdata('is_logged_in');
+		$this->load->library('session');
 		$this->output->enable_profiler(FALSE);
 	}
 	
