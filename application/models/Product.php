@@ -1,5 +1,5 @@
 <?php
-
+     defined("BASEPATH") OR exit("No direct script access allowed");
 class Product extends CI_Model
 {
     // THIS MODEL IS RESPONSIBLE FOR THE CRUD OPERATION IN PRODUCTS CONTROLLER

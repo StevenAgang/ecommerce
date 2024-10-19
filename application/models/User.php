@@ -1,5 +1,5 @@
 <?php
-
+    defined("BASEPATH") OR exit("No direct script access allowed");
 class User extends CI_Model
 {
     // THIS MODEL IS RESPONSIBLE FOR CRUD OPERATION IN USER

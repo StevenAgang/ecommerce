@@ -1,5 +1,5 @@
 <?php
-
+     defined("BASEPATH") OR exit("No direct script access allowed");
 class Carts extends CI_Controller
 {
     // THIS CONTROLLER IS RESPONSIBLE FOR THE ADD TO CARTS IN CUSTOMER SIDE
