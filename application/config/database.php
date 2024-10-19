@@ -77,7 +77,7 @@ $fields = parse_url($uri);
 $connection = 'mysql:';
 $connection .= 'host=' . $fields['host'];
 $connection .= ';port='. $fields['port'];
-$connection .= ';dbname=' . getenv('database');
+$connection .= ';dbname='. getenv('database');
 $connection .= ";sslmode=verify-ca;sslrootcert=". __DIR__ . '/../../ca.pem';
 $db['default'] = array(
 	'dsn'	=> $connection,
