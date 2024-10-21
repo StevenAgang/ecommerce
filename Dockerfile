@@ -8,4 +8,6 @@ COPY . .
 
 RUN a2enmod rewrite
 
+RUN composer update
+
 EXPOSE 80
