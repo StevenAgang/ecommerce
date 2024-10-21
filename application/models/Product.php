@@ -1,5 +1,5 @@
 <?php
-     defined("BASEPATH") OR exit("No direct script access allowed");
+
 class Product extends CI_Model
 {
     // THIS MODEL IS RESPONSIBLE FOR THE CRUD OPERATION IN PRODUCTS CONTROLLER
@@ -178,10 +178,6 @@ class Product extends CI_Model
             if($files['name'] !== '')
             {
                 ++$count;
-<<<<<<< HEAD
-                $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
-=======
->>>>>>> dev
                 $file_parts = pathinfo(basename($files['name']));
                 $new_file_name = $file_parts['filename'].'_'.time();
                 $this->cloud->upload($files['tmp_name'],$new_file_name);
@@ -264,19 +260,10 @@ class Product extends CI_Model
                 ++$count;
                 if(isset($data['main'.$count]) && $data['main'.$count] === 'on')
                 {
-<<<<<<< HEAD
-                    $file_path = $decoder->main;
-                    if(file_exists($file_path))
-                    {
-                        unlink($file_path);
-                    }
-                    $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
-=======
                     $reverse = strrev($decoder->main);
                     $public_id = explode( '/',$reverse,2);
                     $file_name = strrev($public_id[0]);
                     $this->cloud->delete($file_name);
->>>>>>> dev
                     $file_parts = pathinfo(basename($files['name']));
                     $new_file_name = $file_parts['filename'].'_'.time();
                     $this->cloud->upload($files['tmp_name'],$new_file_name);
@@ -286,15 +273,6 @@ class Product extends CI_Model
                 {
                     if(isset($decoder->$key))
                     {
-<<<<<<< HEAD
-                        $file_path = $decoder->$key;
-                        if(file_exists($file_path))
-                        {
-                            unlink($file_path);
-                        }
-                        $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
-=======
->>>>>>> dev
                         $file_parts = pathinfo(basename($files['name']));
                         $new_file_name = $file_parts['filename'].'_'.time();
                         $this->cloud->upload($files['tmp_name'],$new_file_name);
@@ -302,10 +280,6 @@ class Product extends CI_Model
                     }
                     else
                     {
-<<<<<<< HEAD
-                        $target_dir = __DIR__.'/../../assets/img/'. $data['categories'].'/';
-=======
->>>>>>> dev
                         $file_parts = pathinfo(basename($files['name']));
                         $new_file_name = $file_parts['filename'].'_'.time();
                         $this->cloud->upload($files['tmp_name'],$new_file_name);
