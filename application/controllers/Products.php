@@ -4,6 +4,7 @@ class Products extends CI_Controller
 {
     private $status;
     private $csrf;
+    private $cloud;
     public function __construct()
     {
         parent::__construct();
@@ -14,7 +15,7 @@ class Products extends CI_Controller
     }
     // MAIN VIEW FOR CUSTOMER
     public function main()
-    {
+    {   
         if($this->status === true)
         {
             $view_data['user_data'] = $this->session->userdata('user_data');
@@ -95,8 +96,11 @@ class Products extends CI_Controller
        
     }
     // THIS FUNCTION IS FOR SWITCHING FROM ORDER DETAILS TO PRODUCT DETAILS
-    public function switch_product_view()
+    public function switch_product_view($what_view)
     { 
+        if(!empty($what_view)){
+            $view_data['category'] = 'All Products';
+        }
         $search_data['admin'] = true;
         $search_data['selected_product'] = true;
         $view_data['products'] = $this->product->admin_get_all();
@@ -168,7 +172,7 @@ class Products extends CI_Controller
                 $view_data['total_products'] = $this->product->category_kids(3);
                 break;
             default:
-                $view_data['category'] = $category;
+                $view_data['category'] = 'All Products';
                 $view_data['total_products'] = count($this->product->get_all_products());
                 break;
        }

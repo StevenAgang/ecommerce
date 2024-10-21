@@ -85,7 +85,7 @@ $db['default'] = array(
 	'username' => getenv('username'),
 	'password' => getenv('password'),
 	'database' => getenv('database'),
-	'dbdriver' => 'pdo',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

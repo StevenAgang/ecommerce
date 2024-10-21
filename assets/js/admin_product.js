@@ -117,6 +117,7 @@ $(document).ready(function(){
         }
         html_str += '<input type="submit" name="edit" value="Edit Product">';
         html_str += '</form>';
+        html_str += "<h5> Note: If you have for example 4 images in your current product and you insert only 1 image, the other's will be deleted";
         $('.modal-content').html(html_str);
         $(window).click(function(event){
             if(event.target === $('.modal')[0])
