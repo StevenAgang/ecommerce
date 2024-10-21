@@ -10,6 +10,8 @@ COPY . .
 
 RUN a2enmod rewrite
 
+EXPOSE 80
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN useradd -m composeruser
@@ -17,5 +19,3 @@ RUN useradd -m composeruser
 USER composeruser
 
 RUN composer install
-
-EXPOSE 80
