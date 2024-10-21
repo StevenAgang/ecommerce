@@ -8,11 +8,13 @@ COPY . .
 
 RUN a2enmod rewrite
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 RUN useradd -m composeruser
 
 USER composeruser
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --chown=composeruser:composeruser . .
 
 RUN composer install
 
