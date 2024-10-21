@@ -123,7 +123,7 @@ $(document).ready(function(){
     $('header button').click(function(){
         if($(this).attr('id') === 'login')
         {
-            window.location.href = 'https://ecommerce-pt53.onrender.com/login';
+            window.location.href = 'https://ecommerce-m6o2.onrender.com/login';
             // $('.modal').css('display','block');
             // // var html_str = "<h1> Login </h1>";
             // // html_str += "<form action='users/login' method='post'>";
@@ -142,7 +142,7 @@ $(document).ready(function(){
         }
         else
         {
-            window.location.href = 'https://ecommerce-pt53.onrender.com/register';
+            window.location.href = 'https://ecommerce-m6o2.onrender.com/register';
             // $('.modal').css('display','block');
             // var html_str = "<h1> Register </h1>";
             // html_str += "<form action='' method='post'>";
