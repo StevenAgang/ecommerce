@@ -14,8 +14,6 @@ RUN useradd -m composeruser
 
 USER composeruser
 
-COPY --chown=composeruser:composeruser . .
-
 RUN composer install
 
 EXPOSE 80
