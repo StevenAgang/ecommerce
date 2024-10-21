@@ -12,11 +12,6 @@ RUN useradd -m composeruser
 
 USER composeruser
 
-<<<<<<< HEAD
-=======
-COPY --chown=composeruser:composeruser . .
-
->>>>>>> b9eeeba64e16bf0508935663ee2a1813fc01727a
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN composer install
