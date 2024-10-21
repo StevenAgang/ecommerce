@@ -6,7 +6,7 @@ class Product extends CI_Model
     // INCLUDING THE, ADDING PRODUCTS, EDITING PRODUCTS, NAVIGATION THROUGH CATEGORY
     private $cloud;
     public function __construct(){
-        $this->cloud = new Cloud_helper();
+        $this->cloud = new Cloud();
     }
     public function get_all_products()
     {

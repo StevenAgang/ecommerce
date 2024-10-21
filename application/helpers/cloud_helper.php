@@ -3,7 +3,7 @@
     use Cloudinary\Configuration\Configuration;
     use Cloudinary\Cloudinary;
 
-    class Cloud_helper{
+    class Cloud{
         private $cloud; 
         private $action;
         private $get_url;
