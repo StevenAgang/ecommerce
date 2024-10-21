@@ -120,6 +120,7 @@ main #orders::-webkit-scrollbar
     {
         max-width: 100%;
         width: 5rem;
+        height: 5rem;
         border-radius: 3px;
     }
     main #orders table tr td #quantity

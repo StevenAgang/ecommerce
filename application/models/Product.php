@@ -4,6 +4,10 @@ class Product extends CI_Model
 {
     // THIS MODEL IS RESPONSIBLE FOR THE CRUD OPERATION IN PRODUCTS CONTROLLER
     // INCLUDING THE, ADDING PRODUCTS, EDITING PRODUCTS, NAVIGATION THROUGH CATEGORY
+    private $cloud;
+    public function __construct(){
+        $this->cloud = new Cloud_helper();
+    }
     public function get_all_products()
     {
         return $this->db->query("SELECT * FROM products")->result_array();
@@ -174,18 +178,16 @@ class Product extends CI_Model
             if($files['name'] !== '')
             {
                 ++$count;
-                $target_dir = 'assets/img/'. $data['categories'].'/';
                 $file_parts = pathinfo(basename($files['name']));
-                $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
-                $target_file = $target_dir . $new_file_name;
-                move_uploaded_file($files['tmp_name'], $target_file);
+                $new_file_name = $file_parts['filename'].'_'.time();
+                $this->cloud->upload($files['tmp_name'],$new_file_name);
                 if(isset($data['main'.$count]) && $data['main'.$count] === 'on')
                 {
-                    $path['main'] = $target_file;
+                    $path['main'] = $this->cloud->url() . $new_file_name;
                 }
                 else
                 {
-                    $path['image'.$count] = $target_file;
+                    $path['image'.$count] = $this->cloud->url() . $new_file_name;
                 }
             }
         }
@@ -258,46 +260,45 @@ class Product extends CI_Model
                 ++$count;
                 if(isset($data['main'.$count]) && $data['main'.$count] === 'on')
                 {
-                    $file_path = $decoder->main;
-                    if(file_exists($file_path))
-                    {
-                        unlink($file_path);
-                    }
-                    $target_dir = 'assets/img/'. $data['categories'].'/';
+                    $reverse = strrev($decoder->main);
+                    $public_id = explode( '/',$reverse,2);
+                    $file_name = strrev($public_id[0]);
+                    $this->cloud->delete($file_name);
                     $file_parts = pathinfo(basename($files['name']));
-                    $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
-                    $target_file = $target_dir . $new_file_name;
-                    move_uploaded_file($files['tmp_name'], $target_file);
-                    $path['main'] = $target_file;
+                    $new_file_name = $file_parts['filename'].'_'.time();
+                    $this->cloud->upload($files['tmp_name'],$new_file_name);
+                    $path['main'] = $this->cloud->url() . $new_file_name;
                 }
                 else
                 {
                     if(isset($decoder->$key))
                     {
-                        $file_path = $decoder->$key;
-                        if(file_exists($file_path))
-                        {
-                            unlink($file_path);
-                        }
-                        $target_dir = 'assets/img/'. $data['categories'].'/';
                         $file_parts = pathinfo(basename($files['name']));
-                        $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
-                        $target_file = $target_dir . $new_file_name;
-                        move_uploaded_file($files['tmp_name'], $target_file);
-                        $path['image'.$count] = $target_file;
+                        $new_file_name = $file_parts['filename'].'_'.time();
+                        $this->cloud->upload($files['tmp_name'],$new_file_name);
+                        $path['image'.$count] = $this->cloud->url() . $new_file_name;
                     }
                     else
                     {
-                        $target_dir = 'assets/img/'. $data['categories'].'/';
                         $file_parts = pathinfo(basename($files['name']));
-                        $new_file_name = $file_parts['filename'].'_'.time().'.'.$file_parts['extension'];
-                        $target_file = $target_dir . $new_file_name;
-                        move_uploaded_file($files['tmp_name'], $target_file);
-                        $path['image'.$count] = $target_file;
+                        $new_file_name = $file_parts['filename'].'_'.time();
+                        $this->cloud->upload($files['tmp_name'],$new_file_name);
+                        $path['image'.$count] = $this->cloud->url() . $new_file_name;
                     }
                 }
             }
         }
+        $image = new ArrayObject($decoder);
+        $this->delete_extra_image($decoder,$image->count());
         return $path;
+    }
+    public function delete_extra_image($decoder,$object_count){
+        for($count = 1; $count <= $object_count; $count++){
+            $image = 'image'.$count;
+            $reverse = strrev($decoder->$image);
+            $public_id = explode( '/',$reverse,2);
+            $file_name = strrev($public_id[0]);
+            $this->cloud->delete($file_name);
+        }
     }
 }
