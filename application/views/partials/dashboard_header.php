@@ -25,7 +25,7 @@
 <?php   if(isset($admin) && $admin === true)
         {
 ?>
-            <a title="Products" id="admin_product_view" href="<?=base_url('products/switch_product_view')?>"><img src="/assets/img/clothes.png" alt=""></a>
+            <a title="Products" id="admin_product_view" href="<?=base_url('products/switch_product_view/product_view')?>"><img src="/assets/img/clothes.png" alt=""></a>
 <?php
         }
 ?>
