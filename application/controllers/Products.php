@@ -4,7 +4,6 @@ class Products extends CI_Controller
 {
     private $status;
     private $csrf;
-    private $cloud;
     public function __construct()
     {
         parent::__construct();

@@ -17,7 +17,7 @@
                         'secure' => TRUE
                     ]
             ]);         
-            $this->url = getenv('url');
+            $this->get_url = getenv('url');
             $this->cloud = new Cloudinary($config);
             $this->action = $this->cloud->uploadApi();
         }
