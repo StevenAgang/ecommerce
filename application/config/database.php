@@ -72,20 +72,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$uri = getenv('uri');
-$fields = parse_url($uri);
-$connection = 'mysql:';
-$connection .= 'host=' . $fields['host'];
-$connection .= ';port='. $fields['port'];
-$connection .= ';dbname='. getenv('database');
-$connection .= ";sslmode=verify-ca;sslrootcert=". __DIR__ . '/../../ca.pem';
+// $uri = getenv('uri');
+// $fields = parse_url($uri);
+// $connection = 'mysql:';
+// $connection .= 'host=' . $fields['host'];
+// $connection .= ';port='. $fields['port'];
+// $connection .= ';dbname='. getenv('database');
+// $connection .= ";sslmode=verify-ca;sslrootcert=". __DIR__ . '/../../ca.pem';
 $db['default'] = array(
-	'dsn'	=> $connection,
-	'hostname' => getenv('host'),
-	'username' => getenv('username'),
-	'password' => getenv('password'),
-	'database' => getenv('database'),
-	'dbdriver' => 'pdo',
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'toor',
+	'database' => 'ecommerce',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
