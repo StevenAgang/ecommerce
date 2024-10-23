@@ -123,7 +123,7 @@ $(document).ready(function(){
     $('header button').click(function(){
         if($(this).attr('id') === 'login')
         {
-            window.location.href = 'http://ecommerce/login';
+            window.location.href = 'http://ecommerce-dev/login';
             // $('.modal').css('display','block');
             // // var html_str = "<h1> Login </h1>";
             // // html_str += "<form action='users/login' method='post'>";
@@ -142,7 +142,7 @@ $(document).ready(function(){
         }
         else
         {
-            window.location.href = 'http://ecommerce/register';
+            window.location.href = 'http://ecommerce-dev/register';
             // $('.modal').css('display','block');
             // var html_str = "<h1> Register </h1>";
             // html_str += "<form action='' method='post'>";
@@ -212,7 +212,7 @@ $(document).ready(function(){
             $('main section').html(res.partial);
             $('main #header').html('');
             $this.attr('id', 'admin_view'); 
-            $this.attr('href', 'http://ecommerce/products/admin_view/not_main');
+            $this.attr('href', 'http://ecommerce-dev/products/admin_view/not_main');
         },'json');
         return false;
     });
@@ -225,7 +225,7 @@ $(document).ready(function(){
             $('main section').html(res.partial);
             $('main #header').html('Orders');
             $this.attr('id', 'customer_view');
-            $this.attr('href', 'http://ecommerce/products/admin_switch_view'); 
+            $this.attr('href', 'http://ecommerce-dev/products/admin_switch_view'); 
         },'json');
         return false;
     });

@@ -3,7 +3,7 @@
     use Cloudinary\Configuration\Configuration;
     use Cloudinary\Cloudinary;
 
-    class Cloud_helper{
+    class Cloud{
         private $cloud; 
         private $action;
         private $get_url;
@@ -17,7 +17,7 @@
                         'secure' => TRUE
                     ]
             ]);         
-            $this->url = getenv('url');
+            $this->get_url = getenv('url');
             $this->cloud = new Cloudinary($config);
             $this->action = $this->cloud->uploadApi();
         }

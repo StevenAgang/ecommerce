@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
@@ -189,7 +189,7 @@ switch (ENVIRONMENT)
  *  Resolve the system path for increased reliability
  * ---------------------------------------------------------------
  */
-
+	
 	// Set the current directory correctly for CLI requests
 	if (defined('STDIN'))
 	{
@@ -230,6 +230,7 @@ switch (ENVIRONMENT)
 	define('BASEPATH', $system_path);
 
 	// Path to the front controller (this file) directory
+
 	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
 	// Name of the "system" directory
@@ -312,5 +313,9 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+// For loading the env value 
+// Note: Use this for development only
+require_once __DIR__.'/env.php';
+// 
 require_once __DIR__.'/vendor/autoload.php';
 require_once BASEPATH.'core/CodeIgniter.php';

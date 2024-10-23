@@ -6,7 +6,7 @@ class Product extends CI_Model
     // INCLUDING THE, ADDING PRODUCTS, EDITING PRODUCTS, NAVIGATION THROUGH CATEGORY
     private $cloud;
     public function __construct(){
-        $this->cloud = new Cloud_helper();
+        $this->cloud = new Cloud();
     }
     public function get_all_products()
     {
@@ -50,7 +50,7 @@ class Product extends CI_Model
         return $this->db->query("SELECT * FROM products WHERE category_id = ?",array($category_id['id']))->result_array(); 
     }
     public function get_next_page($page)
-    {
+    {   
         $page = (int)$page;
         $display = array();
         $next_page = array();
@@ -174,10 +174,9 @@ class Product extends CI_Model
         $path = array();
         $count = 0;
         foreach($_FILES as $files)
-        {   
+        {   ++$count;
             if($files['name'] !== '')
             {
-                ++$count;
                 $file_parts = pathinfo(basename($files['name']));
                 $new_file_name = $file_parts['filename'].'_'.time();
                 $this->cloud->upload($files['tmp_name'],$new_file_name);
@@ -255,24 +254,35 @@ class Product extends CI_Model
         $count = 0;
         foreach($_FILES as $key => $files)
         {
+            ++$count;
             if($files['name'] !== '')
             {
-                ++$count;
                 if(isset($data['main'.$count]) && $data['main'.$count] === 'on')
                 {
-                    $reverse = strrev($decoder->main);
-                    $public_id = explode( '/',$reverse,2);
-                    $file_name = strrev($public_id[0]);
-                    $this->cloud->delete($file_name);
-                    $file_parts = pathinfo(basename($files['name']));
-                    $new_file_name = $file_parts['filename'].'_'.time();
-                    $this->cloud->upload($files['tmp_name'],$new_file_name);
-                    $path['main'] = $this->cloud->url() . $new_file_name;
+                    if($_FILES['image'.$count]['name'] !== '')
+                    {
+                        $replace['image'.$count] = $decoder->$key;
+                        $reverse = strrev($decoder->main);
+                        $public_id = explode( '/',$reverse,2);
+                        $file_name = strrev($public_id[0]);
+                        $this->cloud->delete($file_name);
+                        $file_parts = pathinfo(basename($files['name']));
+                        $new_file_name = $file_parts['filename'].'_'.time();
+                        $this->cloud->upload($files['tmp_name'],$new_file_name);
+                        $path['main'] = $this->cloud->url() . $new_file_name;
+                    }else
+                    {
+                        $path['main'] = $decoder->main;
+                    }
                 }
                 else
                 {
                     if(isset($decoder->$key))
                     {
+                        $reverse = strrev($decoder->$key);
+                        $public_id = explode( '/',$reverse,2);
+                        $file_name = strrev($public_id[0]);
+                        $this->cloud->delete($file_name);
                         $file_parts = pathinfo(basename($files['name']));
                         $new_file_name = $file_parts['filename'].'_'.time();
                         $this->cloud->upload($files['tmp_name'],$new_file_name);
@@ -286,19 +296,36 @@ class Product extends CI_Model
                         $path['image'.$count] = $this->cloud->url() . $new_file_name;
                     }
                 }
+            }else
+            {
+                if(!empty($decoder->$key))
+                {
+                    $path['image'.$count] = $decoder->$key;
+                }
             }
         }
-        $image = new ArrayObject($decoder);
-        $this->delete_extra_image($decoder,$image->count());
-        return $path;
-    }
-    public function delete_extra_image($decoder,$object_count){
-        for($count = 1; $count <= $object_count; $count++){
-            $image = 'image'.$count;
-            $reverse = strrev($decoder->$image);
-            $public_id = explode( '/',$reverse,2);
-            $file_name = strrev($public_id[0]);
-            $this->cloud->delete($file_name);
+        if(!isset($path['main']) && $decoder->main == null || !isset($path['main']) && count($path) === 5)
+        {
+            $main['main'] = $path['image1'];
+            array_shift($path);
+            $path = array_merge($main, $path);
+        }else if(!isset($path['main']) && $decoder->main != null)
+        {
+            $main['main'] = $decoder->main;
+            $path = array_merge($main, $path);
+        }else{
+            $path = array_merge($path, $replace);
         }
+        foreach($path as $key => $value)
+        {
+            if(count($path) > 5)
+            {
+                array_pop( $path);
+            }else
+            {
+                break;
+            }
+        }
+        return $path;
     }
 }

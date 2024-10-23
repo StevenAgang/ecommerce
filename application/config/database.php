@@ -72,19 +72,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-// $uri = getenv('uri');
-// $fields = parse_url($uri);
-// $connection = 'mysql:';
-// $connection .= 'host=' . $fields['host'];
-// $connection .= ';port='. $fields['port'];
-// $connection .= ';dbname='. getenv('database');
-// $connection .= ";sslmode=verify-ca;sslrootcert=". __DIR__ . '/../../ca.pem';
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'toor',
-	'database' => 'ecommerce',
+	'hostname' => $_ENV['host'],
+	'username' => $_ENV['username'],
+	'password' => $_ENV['password'],
+	'database' => $_ENV['database'],
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

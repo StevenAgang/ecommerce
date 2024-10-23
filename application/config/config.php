@@ -30,7 +30,7 @@ $config['stripe_currency'] = 'USD';
 $config['stripe_test_mode'] = true; 
 
 // base url config
-$config['base_url'] = 'http://ecommerce/';
+$config['base_url'] = 'http://ecommerce-dev/';
 
 /*
 |--------------------------------------------------------------------------
