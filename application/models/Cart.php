@@ -54,14 +54,6 @@ class Cart extends CI_Model
         $address_id = $this->db->query('SELECT address_id FROM user_information LEFT JOIN user_account ON user_information.id = user_account.id WHERE user_account.id = ?',array($user_id))->row_array();
         return $this->db->query('SELECT * from address LEFT JOIN user_information ON user_information.id = ? WHERE address.id = ?',array($user_id,$address_id))->row_array();
     }
-   public function shipping($shipping)
-   {
-        $this->session->set_userdata('shipping_info',$shipping);
-   }
-   public function billing($billing)
-   {
-        $this->session->set_userdata('billing_info',$billing);
-   }
    public function verified_checkout($user_id,$products,$info)
    {
         foreach($products as $product)

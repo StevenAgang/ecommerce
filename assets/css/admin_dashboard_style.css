@@ -123,7 +123,7 @@ main #orders::-webkit-scrollbar
         height: 5rem;
         border-radius: 3px;
     }
-    main #orders table tr td #quantity
+    main #orders table tr td #quantity,main #orders table tr td .quantity
     {
         display: inline-block;
         padding-top: 2rem;
@@ -143,11 +143,15 @@ main #orders::-webkit-scrollbar
     {
         color: white;
     }
-    main #orders table tr td #edit input[type=submit]
+    main #orders table tr td #edit input[type=submit], main #orders table tr td #delete input[type=submit]
     {
+        width: 8rem;
+        border: none;
         padding: 0.5rem;
         background-color: #333333;
         color: white;
+        cursor: pointer;
+        margin-block: 0.5rem;
     }
     #description_box
     {

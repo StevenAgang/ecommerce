@@ -328,4 +328,21 @@ class Product extends CI_Model
         }
         return $path;
     }
+    //  Delete products image in the cloud and information in the database
+    public function remove($id): void{
+        $image = $this->db->query('SELECT image_path FROM products WHERE id = ?',array($id['id']))->row_array();
+        $decoder = json_decode($image['image_path']);
+        $image = new ArrayObject($decoder);
+        foreach($image as $value)
+        {
+            $reverse = strrev($value);
+            $public_id = explode('/', $reverse,2);
+            $file_name = strrev($public_id[0]);
+            $this->cloud->delete($file_name);
+        }
+        $query = 'DELETE FROM products WHERE id = ?';
+        $query2 = 'DELETE FROM checkout WHERE product_id = ?';
+        $this->db->query($query,$id['id']);
+        $this->db->query($query2,$id['id']);
+    }
 }

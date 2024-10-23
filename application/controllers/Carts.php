@@ -131,16 +131,6 @@ class Carts extends CI_Controller
             echo json_encode($response);
         }
     }
-    public function set_shipping()
-    {
-        $shipping = $this->input->post(null,true);
-        $this->cart->shipping($shipping);
-    }
-    public function set_billing()
-    {
-        $billing = $this->input->post(null,true);
-        $this->cart->billing($billing);
-    }
     public function checkout()
     {
         $item_price = 0;
