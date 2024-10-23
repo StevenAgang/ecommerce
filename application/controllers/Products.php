@@ -361,4 +361,9 @@ class Products extends CI_Controller
         $this->product->update($this->input->post(null,true));
         redirect(base_url(''));
     }
+      // THIS FUNCTI0N IS FOR DELETING PRODUCT
+      public function delete_products(){
+        $this->product->remove($this->input->post(null,true));
+        redirect(base_url(''));
+    }
 }

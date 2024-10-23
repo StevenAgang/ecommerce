@@ -26,7 +26,6 @@ $(document).ready(function(){
                                 }
                             });
                             $('main #searchbar_carts').html(res.view);
-                            console.log(res.partial);
                             $.get(res.partial,function(res){
                                 $('main section').html(res);
                             });
@@ -89,21 +88,15 @@ $(document).ready(function(){
                 $.post($(this).attr('action'),$(this).serialize());
                 return false;
             case 'add_product':
-                let formdata = new FormData(this);
-                if(validation() === true)
-                {
-                    $.post($(this).attr('action'),formdata,function(res){
-                        $('main section').html(res);
-                    });
-                    return false;
-                }
-                return false;
+               break;
             case 'edit_product':
                 let formdatas = new FormData(this);
                 $.post($(this).attr('action'),formdatas,function(res){
                     $('main section').html(res);
                 });
                 return false;
+            case 'delete':
+                break;
             default:
                 $.post($(this).attr('action'),$(this).serialize(), function(res){
                     $('main section').html(res);

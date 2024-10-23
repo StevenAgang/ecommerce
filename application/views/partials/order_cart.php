@@ -37,36 +37,6 @@
 ?>
         </section>
         <section id='billing'>
-            <section>
-                <header>
-                    <h1>Shipping Information</h1>
-                    <form id="bill" action="">
-                        <label for="same_with_billing">
-                            <input type="checkbox" name="same_with-billing" value="Same in Billing" checked>
-                            Same in Billing
-                        </label>
-                    </form>
-                    <form id="shipping" action="<?=base_url('carts/set_shipping')?>" method="post">
-                        <input type="text" name="fname" placeholder="First name" disabled>
-                        <input type="text" name="lname" placeholder="Last name" disabled>
-                        <input type="text" name="address" placeholder="Address" disabled>
-                        <input type="text" name="city" placeholder="City" disabled>
-                        <input type="text" name="zip" placeholder="Zip" disabled>
-                    </form>
-                </header>
-            </section>
-            <section>
-                <header>
-                    <h1>Billing Information</h1>
-                    <form id="bill_info" action="<?=base_url('carts/set_billing')?>" method="post">
-                        <input type="text" name="fname" placeholder="First name">
-                        <input type="text" name="lname" placeholder="Last name">
-                        <input type="text" name="address" placeholder="Address">
-                        <input type="text" name="city" placeholder="City">
-                        <input type="text" name="zip" placeholder="Zip">
-                    </form>
-                </header>
-            </section>
             <section id="summary">
                 <h1>Order Summary</h1>
                 <p>Items: <span>$<?=$item_price?></span></p>
@@ -75,5 +45,5 @@
             </section>
             <form id="checkout" action="">
                     <input type="submit" name="checkout" value="Proceed to Checkout">
-                </form>
+            </form>
         </section>

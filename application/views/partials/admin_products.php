@@ -3,7 +3,7 @@
           <form action="<?=base_url('products/admin_categories/allproduct')?>" method="post">
                <p><?=$all_products?></p>
                <input type="hidden" name="<?=$csrf['name']?>" value="<?=$csrf['hash']?>">
-               <label for="all_product">
+               <label>
                     <input type="hidden" name="id" value="">
                     <input type="hidden" name="all Products" value="">
                     <input type="submit" name="all_product" value="">
@@ -13,7 +13,7 @@
           <form action="<?=base_url('products/admin_categories/men')?>" method="post">
                <p><?=$men['count']?></p>
                <input type="hidden" name="<?=$csrf['name']?>" value="<?=$csrf['hash']?>">
-               <label for="men">
+               <label>
                     <input type="hidden" name="id" value="1">
                     <input type="hidden" name="category" value="men">
                     <input type="submit" name="men" value="">
@@ -23,7 +23,7 @@
           <form action="<?=base_url('products/admin_categories/women')?>" method="post">
                <p><?=$women['count']?></p>
                <input type="hidden" name="<?=$csrf['name']?>" value="<?=$csrf['hash']?>">
-               <label for="women">
+               <label>
                     <input type="hidden" name="id" value="2">
                     <input type="hidden" name="category" value="women">
                     <input type="submit" name="women" value="">
@@ -33,7 +33,7 @@
           <form action="<?=base_url('products/admin_categories/kids')?>" method="post">
                <p><?=$kids['count']?></p>
                <input type="hidden" name="<?=$csrf['name']?>" value="<?=$csrf['hash']?>">
-               <label for="kids">
+               <label>
                     <input type="hidden" name="id" value="3">
                     <input type="hidden" name="category" value="kids">
                     <input type="submit" name="kids" value="">
@@ -81,6 +81,11 @@
                               <form id="edit">
                                    <input type="hidden" name="id" value="<?=$product['id']?>">
                                    <input type="submit" name="edit" value="Edit Product">
+                              </form>
+                              <form id="delete" action="<?=base_url('products/delete_products')?>" method="post">
+                                   <input type="hidden" name="<?=$csrf['name']?>" value="<?=$csrf['hash']?>">
+                                   <input type="hidden" name="id" value="<?=$product['id']?>">
+                                   <input type="submit" name="edit" value="Delete Product">
                               </form>
                         </td>
                     </tr>

@@ -351,7 +351,7 @@ main #product
         border-top-right-radius: 5px;
         width: 15rem;
         display: block;
-        min-height: 20rem;
+        height: 20rem;
     }
     main #product #description
     {

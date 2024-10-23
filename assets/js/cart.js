@@ -55,41 +55,7 @@ $(document).ready(function(){
         event.preventDefault();
         let valid = true;
         var html_str = "";
-        $('#shipping input').each(function(){
-            if($(this).val() === '')
-            {
-                html_str += '<p class="errors">' + $(this).attr('placeholder') + ' is required';
-                valid = false;
-            }
-            if($('input[name=zip]').val().length > 10)
-            {
-                html_str += '<p class="errors">Zip Code should not exceed 10 characters</p>';
-                valid = false;
-            } 
-        });
-        $('#bill_info input').each(function(){
-            if($(this).val() === '')
-            {
-                html_str += '<p class="errors">' + $(this).attr('placeholder') + ' is required';
-                valid = false;
-            }
-            if($('input[name=zip]').val() !== '')
-            {
-                if($('input[name=zip]').val().length > 10)
-                {
-                    html_str += '<p class="errors">Zip Code should not exceed 10 characters</p>';
-                    valid = false;
-                } 
-            }
-        });
-        if(valid === false)
-        {
-            console.log($('.errors').html());
-            $('.modal').css('display','block');
-            $('p.errors').css('color', 'red');
-            $('.modal-content').html(html_str);
-        }
-        else
+        if($('#order_cart').has('article').length)
         {
             $('#shipping').submit();
             $('#bill_info').submit();
@@ -106,6 +72,13 @@ $(document).ready(function(){
             html_str += '<input type="submit" name="submit" value="Pay">';
             html_str += '</form>';
             $('.modal-content').html(html_str);        
+        }
+        else
+        {
+            html_str += '<h1 class="errors">You have no order</h1>';
+            $('.modal').css('display','block');
+            $('h1.errors').css('color', 'red');
+            $('.modal-content').html(html_str);
         }
         $(window).click(function(event){
             if(event.target === $('.modal')[0])

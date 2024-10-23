@@ -138,7 +138,7 @@ $(document).ready(function(){
         reader.readAsDataURL(file.files[0]);
     });
     $(document).on('change','#edit_product input[type=checkbox]',function(){
-        $('#add_product input[type=checkbox]').not(this).prop('checked', false);
+        $('#edit_product input[type=checkbox]').not(this).prop('checked', false);
     });
     $(document).on('focus','#edit_product input[type=text]',function(){
         if($(this).attr('name') === 'product_name')
