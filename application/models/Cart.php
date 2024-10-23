@@ -66,7 +66,7 @@ class Cart extends CI_Model
    {
         foreach($products as $product)
         {
-            $query = "INSERT INTO checkout (user_id,product_id,quantity,total_price,recipient,address,city,zip,status,created_time,updated_time) VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW())";
+            $query = "INSERT INTO checkout (user_id,product_id,quantity,total_price,recipient,address,city,zip,status,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW())";
             $values = array($user_id,$product['id'],$product['quantity'],$product['total_price'],$info[0]['fname'] . $info[0]['lname'],$info[0]['address'],$info[0]['city'],$info[0]['zip'],'1');
             if($this->db->query($query,$values) === true)
             {

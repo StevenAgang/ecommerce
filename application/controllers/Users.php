@@ -91,7 +91,7 @@ class Users extends CI_Controller {
 			}
 			else
 			{
-				redirect(base_url(''));
+				redirect(base_url('login'));
 			}
 		}
 		else

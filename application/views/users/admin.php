@@ -122,7 +122,7 @@
                               <p id="quantity"><?=$order['quantity']?> Items</p>
                          </td>
                          <td><?=$order['id']?></td>
-                         <td><?=$order['created_time']?></td>
+                         <td><?=$order['created_at']?></td>
                          <td>
 <?php                         foreach($orders['user'] as $info)
                               {
