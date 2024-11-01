@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="/assets/css/cartstyle.css">
         <link rel="stylesheet" href="/assets/css/admin_dashboard_style.css">
         <link rel="stylesheet" href="/assets/css/restriction.css">
+        <link rel="icon" type="image/x-icon" href="/assets/img/eco.jpg">
         <script src="/assets/lib/jquery-3.7.1.js"></script>
         <script src="/assets/js/dashboard.js"></script>
         <script src="/assets/js/details.js"></script>

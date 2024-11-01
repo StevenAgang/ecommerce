@@ -8,6 +8,7 @@
         <title><?=$title?></title>
         <link rel="stylesheet" href="/assets/css/userstyle.css">
         <link rel="stylesheet" href="/assets/css/restriction.css">
+        <link rel="icon" type="image/x-icon" href="/assets/img/eco.jpg">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="/assets/js/user.js"></script>
     </head>
